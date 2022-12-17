@@ -24,14 +24,36 @@ For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120
 
 function productAllLessSelf(arr) {
     let newArr = []
-        for (let i = 0; i < arr.length; i++) {
-          let multiplier = 1
-            for (let j = 0; j < arr.length; j++) {
-                if (i != j){
-                    multiplier *= arr[j]
-                }
-            } 
-          newArr.push(multiplier)
+    for (let i = 0; i < arr.length; i++) {
+        let multiplier = 1
+        for (let j = 0; j < arr.length; j++) {
+            if (i != j) {
+                multiplier *= arr[j]
+            }
         }
-    return newArr
+        newArr.push(multiplier)
     }
+    return newArr
+}
+
+
+/* #3 [Medium]
+This problem was asked by Twitter.
+Implement an autocomplete system. That is, given a query string s and a set of all possible query strings, return all strings in the set that have s as a prefix.
+For example, given the query string de and the set of strings [dog, deer, deal], return [deer, deal].
+Hint: Try preprocessing the dictionary into a more efficient data structure to speed up queries.
+*/
+
+function getWordsStartedBy(arr, prefix) {
+  return arr.filter(word => word.substring(0, prefix.length) === prefix);
+}
+
+function getWordsStartedByLongVersion (arr,prefix) {
+  let newArr = [];
+  for (let i = 0 ; i < arr.length ; i++) {
+    if (arr[i].substring(0, prefix.length) === prefix) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr
+}
