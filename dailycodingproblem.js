@@ -31,7 +31,7 @@ function productAllLessSelf(arr) {
                 multiplier *= arr[j]
             }
         }
-        newArr.push(multiplier)
+        newArr.push(multiplier);
     }
     return newArr
 }
@@ -44,9 +44,11 @@ For example, given the query string de and the set of strings [dog, deer, deal],
 Hint: Try preprocessing the dictionary into a more efficient data structure to speed up queries.
 */
 
-function getWordsStartedBy(arr, prefix) {
-  return arr.filter(word => word.substring(0, prefix.length) === prefix);
-}
+//short version:
+
+const getWordsStartedBy = (arr, prefix) => arr.filter(word => word.substring(0, prefix.length) === prefix);
+
+//long version:
 
 function getWordsStartedByLongVersion (arr,prefix) {
   let newArr = [];
