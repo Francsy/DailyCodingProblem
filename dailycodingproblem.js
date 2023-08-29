@@ -4,6 +4,7 @@ Given a list of numbers and a number k, return whether any two numbers from the 
 For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
 */
 
+// First version (nested loop)
 function numbersChecker(list, k) {
     let check = false;
     for (let i = 0; i < list.length; i++) {
@@ -16,12 +17,25 @@ function numbersChecker(list, k) {
     return check
 }
 
+// Second version (one loop)
+
+function numbersChecker2V(list, k) {
+    const checkedNumbers = [];
+    for (const num of list) {
+        const complement = k - num;
+        if (checkedNumbers.includes(complement)) {
+            return true;
+        }
+        checkedNumbers.push(num);
+    }
+    return false;
+}
+
 /* #2 [Hard]
 This problem was asked by Uber.
 Given an array of integers, return a new array such that each element at index i of the new array is the product of all the numbers in the original array except the one at i.
 For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6] 
 */
-
 
 // Short version:
 
@@ -29,7 +43,6 @@ function productAllLessSelf(arr){
     const totalArrProduct = arr.reduce((acc, num) => acc * num);
     return arr.map(num => totalArrProduct / num);
 }
-
 
 // Long version:
 
@@ -46,9 +59,6 @@ function productAllLessSelfLongVersion(arr) {
     }
     return newArr
 }
-
-
-
 
 /* #3 [Medium]
 This problem was asked by Google.
