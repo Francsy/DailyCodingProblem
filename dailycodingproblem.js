@@ -31,6 +31,20 @@ function numbersChecker2V(list, k) {
     return false;
 }
 
+// Third version (using Set)
+
+function numbersChecker3V(list, k) {
+    const numberSet = new Set();
+    for (const num of list) {
+        const complement = k - num;
+        if (numberSet.has(complement)) {
+            return true;
+        }
+        numberSet.add(num);
+    }
+    return false;
+}
+
 /* #2 [Hard]
 This problem was asked by Uber.
 Given an array of integers, return a new array such that each element at index i of the new array is the product of all the numbers in the original array except the one at i.
