@@ -22,7 +22,18 @@ Given an array of integers, return a new array such that each element at index i
 For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6] 
 */
 
-function productAllLessSelf(arr) {
+
+// Short version:
+
+function productAllLessSelf(arr){
+    const totalArrProduct = arr.reduce((acc, num) => acc * num);
+    return arr.map(num => totalArrProduct / num);
+}
+
+
+// Long version:
+
+function productAllLessSelfLongVersion(arr) {
     let newArr = []
     for (let i = 0; i < arr.length; i++) {
         let multiplier = 1
@@ -35,6 +46,9 @@ function productAllLessSelf(arr) {
     }
     return newArr
 }
+
+
+
 
 /* #3 [Medium]
 This problem was asked by Google.
