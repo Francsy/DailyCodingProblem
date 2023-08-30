@@ -151,7 +151,7 @@ const positiveMissingNumFinder = (arr) => {
 
     // Remove numbers that are not positive integers and repeated numbers for a future proper comparison:
 
-    const filteredArr = arr.filter((num, i, arr) => arr.indexOf(num) === i && num >= 0); 
+    const filteredArr = arr.filter((num, i, arr) => arr.indexOf(num) === i && num >= 0);
 
     const orderedArr = filteredArr.sort((a, b) => a - b); // Order the numbers
 
@@ -163,6 +163,41 @@ const positiveMissingNumFinder = (arr) => {
         }
     }
 }
+
+/* #5 [Medium]
+This problem was asked by Jane Street.
+
+cons(a, b) constructs a pair, and car(pair) and cdr(pair) returns the first and last element of that pair. For example, car(cons(3, 4)) returns 3, and cdr(cons(3, 4)) returns 4.
+
+Given this implementation of cons:
+
+def cons(a, b):
+    def pair(f):
+        return f(a, b)
+    return pair
+Implement car and cdr.
+
+*/
+
+function cons(a, b) {
+    function pair(f) {
+        return f(a, b)
+    }
+    return pair
+}
+
+function car(pair) {
+    return pair(function (a, b) {
+        return a
+    })
+}
+
+function cdr(pair) {
+    return pair(function (a, b) {
+        return b
+    })
+}
+
 
 
 /* #11 [Medium]
