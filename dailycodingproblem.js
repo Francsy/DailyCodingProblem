@@ -56,7 +56,7 @@ For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120
 
 // Short version:
 
-function productAllLessSelf(arr){
+function productAllLessSelf(arr) {
     const totalArrProduct = arr.reduce((acc, num) => acc * num);
     return arr.map(num => totalArrProduct / num);
 }
@@ -97,7 +97,7 @@ assert deserialize(serialize(node)).left.left.val == 'left.left'
 
 // The exercise is written in Python, we will translate it to JS.
 
-class Node { 
+class Node {
     constructor(val, left = null, right = null) {
         this.val = val;
         this.left = left;
@@ -116,7 +116,7 @@ const serialize = root => {
     })
 }
 
-const deserialize= string => {
+const deserialize = string => {
     if (!string) {
         return null;
     }
@@ -137,6 +137,34 @@ console.log(deserializeTree.left.left.val); // Output: 'left.left'
 */
 
 
+/* #4 [Hard]
+This problem was asked by Stripe.
+
+Given an array of integers, find the first missing positive integer in linear time and constant space. In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
+
+For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
+
+You can modify the input array in-place.
+*/
+
+const positiveMissingNumFinder = (arr) => {
+
+    // Remove numbers that are not positive integers and repeated numbers for a future proper comparison:
+
+    const filteredArr = arr.filter((num, i, arr) => arr.indexOf(num) === i && num >= 0); 
+
+    const orderedArr = filteredArr.sort((a, b) => a - b); // Order the numbers
+
+    // I iterate through the array up to one more than its length in case no number is missing from the array, in which case it will be the next one:
+
+    for (i = 0; i <= orderedArr.length; i++) {
+        if (orderedArr[i] !== i + 1) {
+            return i + 1
+        }
+    }
+}
+
+
 /* #11 [Medium]
 This problem was asked by Twitter.
 Implement an autocomplete system. That is, given a query string s and a set of all possible query strings, return all strings in the set that have s as a prefix.
@@ -150,12 +178,12 @@ const getWordsStartedBy = (arr, prefix) => arr.filter(word => word.substring(0, 
 
 //long version:
 
-function getWordsStartedByLongVersion (arr,prefix) {
-  let newArr = [];
-  for (let i = 0 ; i < arr.length ; i++) {
-    if (arr[i].substring(0, prefix.length) === prefix) {
-      newArr.push(arr[i]);
+function getWordsStartedByLongVersion(arr, prefix) {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].substring(0, prefix.length) === prefix) {
+            newArr.push(arr[i]);
+        }
     }
-  }
-  return newArr
+    return newArr
 }
