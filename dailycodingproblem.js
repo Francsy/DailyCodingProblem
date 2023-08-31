@@ -218,6 +218,31 @@ function cdr(pair) {
     })
 }
 
+/* #7 [Medium]
+This problem was asked by Facebook.
+
+Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
+
+For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
+
+You can assume that the messages are decodable. For example, '001' is not allowed.
+
+*/
+
+function countDecodingWays(message) {
+    let numDigits = message.length;
+  
+    let counterArr = new Array(numDigits + 1).fill(0); // New arr where we´ll store the numbers of ways to decode in every iteration
+    counterArr[0] = 1; //We start with at least one way to decode
+    
+    for (let i = 1; i <= numDigits; i++) {   // Iterate over the characters in the message starting at the second one.
+      // Add to counterArr position the previous number and check if there are more ways to do it
+      counterArr[i] = counterArr[i - 1] + (i >= 2 && Number(message[i - 2] + message[i - 1]) >= 10 && Number(message[i - 2] + message[i - 1]) <= 26 ? counterArr[i - 2] : 0);
+      console.log(counterArr)
+    }
+    // Return the value of last value in the counterArr
+    return counterArr[numDigits];
+  }
 
 
 /* #11 [Medium]
