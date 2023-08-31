@@ -149,20 +149,40 @@ You can modify the input array in-place.
 
 const positiveMissingNumFinder = (arr) => {
 
-    // Remove numbers that are not positive integers and repeated numbers for a future proper comparison:
+    // Order numbers, remove numbers the not positive integers ones and repeated ones for a proper comparison:
 
-    const filteredArr = arr.filter((num, i, arr) => arr.indexOf(num) === i && num >= 0);
-
-    const orderedArr = filteredArr.sort((a, b) => a - b); // Order the numbers
+    const simplifiedArr = arr.sort((a, b) => a - b).filter((num, i, arr) => arr.indexOf(num) === i && num >= 0)
 
     // I iterate through the array up to one more than its length in case no number is missing from the array, in which case it will be the next one:
 
-    for (i = 0; i <= orderedArr.length; i++) {
-        if (orderedArr[i] !== i + 1) {
+    for (i = 0; i <= simplifiedArr.length; i++) {
+        if (simplifiedArr[i] !== i + 1) {
             return i + 1
         }
     }
 }
+
+// No built-in methods version:
+
+const positiveMissingNumFinderV2 = (arr) => {
+
+    // Separate positive numbers and place them in their correct positions
+    for (let i = 0; i < arr.length; i++) {
+        while (arr[i] > 0 && arr[arr[i] - 1] !== arr[i]) {
+            [arr[arr[i] - 1], arr[i]] = [arr[i], arr[arr[i] - 1]];
+        }
+    }
+
+    // Find the first missing positive number
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== i + 1) {
+            return i + 1;
+        }
+    }
+    // If there is no missing positive number between the arr then it is the next one:
+    return arr.length + 1;
+};
+
 
 /* #5 [Medium]
 This problem was asked by Jane Street.
