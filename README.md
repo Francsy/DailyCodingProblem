@@ -17,4 +17,6 @@ My solutions can be found in the [dailycodingproblem.js](./dailycodingproblem.js
 
 I encourage you to try them out too. Train, train, and train... and **may the magic be with you!!!**
 
-<img src="https://media.giphy.com/media/BJmTtZL4hova8/giphy.gif">
+<div align="center">
+<img src="https://media.giphy.com/media/BJmTtZL4hova8/giphy.gif" align="center">
+</div>
