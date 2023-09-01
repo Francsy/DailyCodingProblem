@@ -231,18 +231,18 @@ You can assume that the messages are decodable. For example, '001' is not allowe
 
 function countDecodingWays(message) {
     let numDigits = message.length;
-  
+
     let counterArr = new Array(numDigits + 1).fill(0); // New arr where we´ll store the numbers of ways to decode in every iteration
     counterArr[0] = 1; //We start with at least one way to decode
-    
+
     for (let i = 1; i <= numDigits; i++) {   // Iterate over the characters in the message starting at the second one.
-      // Add to counterArr position the previous number and check if there are more ways to do it
-      counterArr[i] = counterArr[i - 1] + (i >= 2 && Number(message[i - 2] + message[i - 1]) >= 10 && Number(message[i - 2] + message[i - 1]) <= 26 ? counterArr[i - 2] : 0);
-      console.log(counterArr)
+        // Add to counterArr position the previous number and check if there are more ways to do it
+        counterArr[i] = counterArr[i - 1] + (i >= 2 && Number(message[i - 2] + message[i - 1]) >= 10 && Number(message[i - 2] + message[i - 1]) <= 26 ? counterArr[i - 2] : 0);
+        console.log(counterArr)
     }
     // Return the value of last value in the counterArr
     return counterArr[numDigits];
-  }
+}
 
 
 /* #11 [Medium]
@@ -266,4 +266,27 @@ function getWordsStartedByLongVersion(arr, prefix) {
         }
     }
     return newArr
+}
+
+/* #15 [Medium]
+This problem was asked by Facebook.
+
+Given a stream of elements too large to store in memory, pick a random element from the stream with uniform probability.
+*/
+
+const getRandomElement = stream => {
+    let selectedElement = null;
+    let counter = 0;
+
+    for (const element of stream) {
+        counter++;
+        console.log(counter);
+        if (counter === 1) {
+            selectedElement = element;
+        } else { 
+            let random = Math.floor(Math.random() * counter)
+            random === 0 ? selectedElement = element : null; // In every iteration every element will have the chance to get the 0.
+        }
+    }
+    return selectedElement;
 }
