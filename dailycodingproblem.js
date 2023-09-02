@@ -1,4 +1,4 @@
-/* #1 [Easy] 
+/* #1 [Easy] --------------------------------------------------------------
 This problem was recently asked by Google.
 
 Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
@@ -47,7 +47,7 @@ function numbersChecker3V(list, k) {
     return false;
 }
 
-/* #2 [Hard]
+/* #2 [Hard] --------------------------------------------------------------
 This problem was asked by Uber.
 
 Given an array of integers, return a new array such that each element at index i of the new array is the product of all the numbers in the original array except the one at i.
@@ -77,7 +77,7 @@ function productAllLessSelfLongVersion(arr) {
     return newArr
 }
 
-/* #3 [Medium]
+/* #3 [Medium] --------------------------------------------------------------
 This problem was asked by Google.
 
 Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, and deserialize(s), which deserializes the string back into the tree.
@@ -93,7 +93,7 @@ The following test should pass:
 
 node = Node('root', Node('left', Node('left.left')), Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left'
- */
+*/
 
 // The exercise is written in Python, we will translate it to JS.
 
@@ -137,7 +137,7 @@ console.log(deserializeTree.left.left.val); // Output: 'left.left'
 */
 
 
-/* #4 [Hard]
+/* #4 [Hard] --------------------------------------------------------------
 This problem was asked by Stripe.
 
 Given an array of integers, find the first missing positive integer in linear time and constant space. In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
@@ -184,7 +184,7 @@ const positiveMissingNumFinderV2 = (arr) => {
 };
 
 
-/* #5 [Medium]
+/* #5 [Medium] --------------------------------------------------------------
 This problem was asked by Jane Street.
 
 cons(a, b) constructs a pair, and car(pair) and cdr(pair) returns the first and last element of that pair. For example, car(cons(3, 4)) returns 3, and cdr(cons(3, 4)) returns 4.
@@ -196,7 +196,6 @@ def cons(a, b):
         return f(a, b)
     return pair
 Implement car and cdr.
-
 */
 
 function cons(a, b) {
@@ -218,7 +217,16 @@ function cdr(pair) {
     })
 }
 
-/* #7 [Medium]
+/* #6 [Hard] --------------------------------------------------------------
+This problem was asked by Google.
+
+An XOR linked list is a more memory efficient doubly linked list. Instead of each node holding next and prev fields, it holds a field named both, which is an XOR of the next node and the previous node. Implement an XOR linked list; it has an add(element) which adds the element to the end, and a get(index) which returns the node at index.
+
+If using a language that has no pointers (such as Python), you can assume you have access to get_pointer and dereference_pointer functions that converts between nodes and memory addresses.
+*/
+
+
+/* #7 [Medium] --------------------------------------------------------------
 This problem was asked by Facebook.
 
 Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
@@ -226,7 +234,6 @@ Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the nu
 For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
 
 You can assume that the messages are decodable. For example, '001' is not allowed.
-
 */
 
 function countDecodingWays(message) {
@@ -244,9 +251,42 @@ function countDecodingWays(message) {
     return counterArr[numDigits];
 }
 
+/* #8 [Easy] --------------------------------------------------------------
+This problem was asked by Google.
 
-/* #11 [Medium]
+A unival tree (which stands for "universal value") is a tree where all nodes under it have the same value.
+
+Given the root to a binary tree, count the number of unival subtrees.
+
+For example, the following tree has 5 unival subtrees:
+
+   0
+  / \
+ 1   0
+    / \
+   1   0
+  / \
+ 1   1
+*/
+
+/* #9 [Hard] --------------------------------------------------------------
+
+This problem was asked by Airbnb.
+
+Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative.
+
+For example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. [5, 1, 1, 5] should return 10, since we pick 5 and 5.
+
+Follow-up: Can you do this in O(N) time and constant space?
+*/
+
+/* #10 [Missing] --------------------------------------------------------------
+
+*/
+
+/* #11 [Medium] --------------------------------------------------------------
 This problem was asked by Twitter.
+
 Implement an autocomplete system. That is, given a query string s and a set of all possible query strings, return all strings in the set that have s as a prefix.
 For example, given the query string de and the set of strings [dog, deer, deal], return [deer, deal].
 Hint: Try preprocessing the dictionary into a more efficient data structure to speed up queries.
@@ -268,7 +308,29 @@ function getWordsStartedByLongVersion(arr, prefix) {
     return newArr
 }
 
-/* #15 [Medium]
+/* #12 [Missing] --------------------------------------------------------------
+
+*/
+
+/* #13 [Hard] --------------------------------------------------------------
+This problem was asked by Amazon.
+
+Given an integer k and a string s, find the length of the longest substring that contains at most k distinct characters.
+
+For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb".
+*/
+
+/* #14 [Medium] --------------------------------------------------------------
+This problem was asked by Google.
+
+The area of a circle is defined as πr^2. Estimate π to 3 decimal places using a Monte Carlo method.
+
+Hint: The basic equation of a circle is x2 + y2 = r2.
+*/
+
+
+
+/* #15 [Medium] --------------------------------------------------------------
 This problem was asked by Facebook.
 
 Given a stream of elements too large to store in memory, pick a random element from the stream with uniform probability.
