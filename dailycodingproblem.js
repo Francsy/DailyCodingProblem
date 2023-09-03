@@ -218,17 +218,9 @@ function cdr(pair) {
 }
 
 /* #6 [Hard] --------------------------------------------------------------
-This problem was asked by Google.
-
-An XOR linked list is a more memory efficient doubly linked list. Instead of each node holding next and prev fields, it holds a field named both, which is an XOR of the next node and the previous node. Implement an XOR linked list; it has an add(element) which adds the element to the end, and a get(index) which returns the node at index.
-
-If using a language that has no pointers (such as Python), you can assume you have access to get_pointer and dereference_pointer functions that converts between nodes and memory addresses.
+This problem was asked by Google. An XOR linked list is a more memory efficient doubly linked list. Instead of each node holding next and prev fields, it holds a field named both, which is an XOR of the next node and the previous node. Implement an XOR linked list; it has an add(element) which adds the element to the end, and a get(index) which returns the node at index. If using a language that has no pointers (such as Python), you can assume you have access to get_pointer and dereference_pointer functions that converts between nodes and memory addresses.
+(Not proper solution in JS due to the language's limitations)
 */
-
-
-
-
-
 
 /* #7 [Medium] --------------------------------------------------------------
 This problem was asked by Facebook.
@@ -271,6 +263,41 @@ For example, the following tree has 5 unival subtrees:
    1   0
   / \
  1   1
+*/
+
+class TreeNode {
+    constructor(val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+const univalSubCount = root => {
+    if (root === null) { // Null nodes returns 0 since they doesn´t exist
+        return 0
+    }
+    let count = 0;
+    if ((!root.left || root.left.val === root.val) && (!root.right || root.right.val === root.val)) {
+        count++ // If there is no subnodes or the subnodes has the same value it is unival
+    }
+    count += univalSubCount(root.left); // We pass the function to the subtrees to iterate the entire tree
+    count += univalSubCount(root.right);
+    return count;
+}
+
+/* 
+Testing:
+
+const root = new TreeNode(0);
+root.left = new TreeNode(1);
+root.right = new TreeNode(0);
+root.right.left = new TreeNode(1);
+root.right.right = new TreeNode(0);
+root.right.left.left = new TreeNode(1);
+root.right.left.right = new TreeNode(1);
+
+univalSubCount(root); // output: 5
 */
 
 /* #9 [Hard] --------------------------------------------------------------
@@ -349,7 +376,7 @@ const getRandomElement = stream => {
         console.log(counter);
         if (counter === 1) {
             selectedElement = element;
-        } else { 
+        } else {
             let random = Math.floor(Math.random() * counter)
             random === 0 ? selectedElement = element : null; // In every iteration every element will have the chance to get the 0.
         }
@@ -362,32 +389,32 @@ This problem was asked by Snapchat.
 
 Given an array of time intervals (start, end) for classroom lectures (possibly overlapping), find the minimum number of rooms required.
 
-For example, given [(30, 75), (0, 50), (60, 150)], you should return 2.
+For example, given [[30, 75], [0, 50], [60, 150]], you should return 2.
 */
 
 const requiredRoomsCounter = (arr) => {
     let classIntervals = []; // We´ll create an objects array with all times and types (start, end)
     for (const [start, end] of arr) {
-      classIntervals.push({ time: start, type: 'start' })
-      classIntervals.push({ time: end, type: 'end'})
+        classIntervals.push({ time: start, type: 'start' })
+        classIntervals.push({ time: end, type: 'end' })
     }
-    
-    classIntervals.sort((a, b) => { //Order all times to track what will happen step by step
-      if (a.time !== b.time) {
-        return a.time - b.time;
-      }
+
+    classIntervals.sort((a, b) => { // Order all times to track what will happen step by step
+        if (a.time !== b.time) {
+            return a.time - b.time;
+        }
     });
-    
+
     let currentRooms = 0;
     let maxRooms = 0;
-    
-    for (const interval of classIntervals) { 
-      if (interval.type === 'start') {
-        currentRooms++ // Each 'start' adds a classroom 
-        maxRooms = Math.max(currentRooms, maxRooms); // When a room is added, we need to check if we exceed the maximum number of rooms required, and reassign if so
-      } else {
-        currentRooms-- // Each 'end' releases a classroom
-      }
+
+    for (const interval of classIntervals) {
+        if (interval.type === 'start') {
+            currentRooms++ // Each 'start' adds a classroom 
+            maxRooms = Math.max(currentRooms, maxRooms); // When a room is added, we need to check if we exceed the maximum number of rooms required, and reassign if so
+        } else {
+            currentRooms-- // Each 'end' releases a classroom
+        }
     }
     return maxRooms;
 }
