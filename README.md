@@ -9,6 +9,10 @@
 </div>
 <br>
 
+---
+
+<br>
+
 ### Problems, problems, problems...
 
 In our best days, **programming feels like performing magic**. It's like we're attending the fourth year at Hogwarts School. Everything just... WORKS!!
@@ -33,7 +37,9 @@ I encourage you to try them out too. Train, train, and train... and **may the ma
 
 <br>
 
-**Don´t panic. <br> Remember the Coding Cycle:**<br>
+### Don´t panic. 
+
+<br> And remember the **Coding Cycle:**<br><br>
 
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20with%20Spiral%20Eyes.png" width="10%" alt="Broken system!"/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

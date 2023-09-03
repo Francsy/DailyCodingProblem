@@ -226,6 +226,10 @@ If using a language that has no pointers (such as Python), you can assume you ha
 */
 
 
+
+
+
+
 /* #7 [Medium] --------------------------------------------------------------
 This problem was asked by Facebook.
 
@@ -351,4 +355,39 @@ const getRandomElement = stream => {
         }
     }
     return selectedElement;
+}
+
+/* #21 [Easy] --------------------------------------------------------------
+This problem was asked by Snapchat.
+
+Given an array of time intervals (start, end) for classroom lectures (possibly overlapping), find the minimum number of rooms required.
+
+For example, given [(30, 75), (0, 50), (60, 150)], you should return 2.
+*/
+
+const requiredRoomsCounter = (arr) => {
+    let classIntervals = []; // We´ll create an objects array with all times and types (start, end)
+    for (const [start, end] of arr) {
+      classIntervals.push({ time: start, type: 'start' })
+      classIntervals.push({ time: end, type: 'end'})
+    }
+    
+    classIntervals.sort((a, b) => { //Order all times to track what will happen step by step
+      if (a.time !== b.time) {
+        return a.time - b.time;
+      }
+    });
+    
+    let currentRooms = 0;
+    let maxRooms = 0;
+    
+    for (const interval of classIntervals) { 
+      if (interval.type === 'start') {
+        currentRooms++ // Each 'start' adds a classroom 
+        maxRooms = Math.max(currentRooms, maxRooms); // When a room is added, we need to check if we exceed the maximum number of rooms required, and reassign if so
+      } else {
+        currentRooms-- // Each 'end' releases a classroom
+      }
+    }
+    return maxRooms;
 }
