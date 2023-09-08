@@ -311,6 +311,23 @@ For example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. [5, 1,
 Follow-up: Can you do this in O(N) time and constant space?
 */
 
+const nonAdjacentMaxSum = (arr) => {
+    let prevSum = 0;
+    let currentSum = 0;
+  
+    for (let i = 0; i < arr.length; i++) {
+      const newSum = Math.max(currentSum, prevSum + arr[i]);
+      prevSum = currentSum;
+      currentSum = newSum;
+    }
+    return currentSum;
+  }
+  
+
+
+
+
+
 /* #10 [Missing] --------------------------------------------------------------
 
 */
