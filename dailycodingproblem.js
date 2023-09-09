@@ -314,15 +314,15 @@ Follow-up: Can you do this in O(N) time and constant space?
 const nonAdjacentMaxSum = (arr) => {
     let prevSum = 0;
     let currentSum = 0;
-  
+
     for (let i = 0; i < arr.length; i++) {
-      const newSum = Math.max(currentSum, prevSum + arr[i]);
-      prevSum = currentSum;
-      currentSum = newSum;
+        const newSum = Math.max(currentSum, prevSum + arr[i]);
+        prevSum = currentSum;
+        currentSum = newSum;
     }
     return currentSum;
-  }
-  
+}
+
 
 
 
@@ -375,6 +375,26 @@ The area of a circle is defined as πr^2. Estimate π to 3 decimal places using 
 
 Hint: The basic equation of a circle is x2 + y2 = r2.
 */
+
+
+const estimatePi = random => {
+    let inside = 0;
+
+    for (let i = 0; i < random; i++) {
+        const x = Math.random(); // X-coordinate between 0 and 1
+        const y = Math.random(); // y-coordinate between 0 and 1
+
+        // Check if that random point is inside the circle (x^2 + y^2 <= 1)
+        if (x * x + y * y <= 1) {
+            inside++;
+        }
+    }
+
+    // Estimate π as 4 times the ratio of points inside the circle to the total points
+    const estimatedPi = (inside / random) * 4;
+
+    return estimatedPi.toFixed(3);
+}
 
 
 
