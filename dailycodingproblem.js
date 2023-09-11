@@ -430,6 +430,24 @@ get_last(i): gets the ith last element from the log. i is guaranteed to be small
 You should be as efficient with time and space as possible.
 */
 
+class orderLog {
+    constructor(N) {
+        this.N = N;
+        this.log = [];
+    }
+
+    record(orderID) {
+        this.log.push(orderID);
+        if (this.log.length > this.N) {
+            this.log.shift();
+        }
+    }
+    getLast(i) {
+        return this.log[this.log.length - i]
+    }
+}
+
+
 /* #17 [Hard]
 This problem was asked by Google.
 
