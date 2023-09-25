@@ -390,6 +390,21 @@ const countWaysToClimb = (N) => {
     return dp[N];
 }
 
+const countWaysToClimbV2 = (N, X) => {
+    const dp = new Array(N + 1).fill(0);
+    dp[0] = 1;
+
+    for (let i = 1; i <= N; i++) {
+        for (const x of X) {
+            if (i - x >= 0) {
+                dp[i] += dp[i - x];
+            }
+        }
+    }
+
+    return dp[N];
+}
+
 /* #13 [Hard] --------------------------------------------------------------
 This problem was asked by Amazon.
 
