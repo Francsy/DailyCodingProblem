@@ -547,6 +547,24 @@ Do this in O(n) time and O(k) space. You can modify the input array in-place and
 */
 
 
+function maxSubArrValV1(arr,k){
+    if (k < 1 || k > arr.length) return [];
+    
+    const result = [];
+    const currentWindow = [];
+    
+    for (let i = 0 ; i < arr.length ; i++) {
+      currentWindow.push(arr[i]);
+      if (currentWindow.length < k) continue;
+      if (currentWindow.length > k) currentWindow.shift();
+      result.push(Math.max(...currentWindow))
+    }
+    return result;
+}
+  
+
+
+
 /* #21 [Easy] --------------------------------------------------------------
 This problem was asked by Snapchat.
 
